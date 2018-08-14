@@ -1,6 +1,4 @@
-../.vscode
-../.sass-cache
-../env
+env
 geckodriver.log
 purbeurre_platform/__pycache__/
 search/__pycache__/
