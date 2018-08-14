@@ -17,7 +17,7 @@ def index(request):
     """
     header_form =  HeaderSearchForm()
     home_form = HomeSearchForm()
-    return render(request, 'index..html', locals())
+    return render(request, 'index.html', locals())
 
 # Search Selection
 def choice(request):
