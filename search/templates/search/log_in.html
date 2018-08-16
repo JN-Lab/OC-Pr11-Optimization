@@ -23,6 +23,13 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <form class="col-lg-8" action="" method="post">
                 {% csrf_token %}
                 {% if error %}

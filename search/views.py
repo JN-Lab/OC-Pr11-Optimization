@@ -3,6 +3,7 @@
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -177,9 +178,9 @@ def register(request):
                 )
                 email.send()
 
+                messages.success(request, """Un email vous a été envoyé. Veuillez confirmer 
+                    s'il vous plait votre adresse mail pour finaliser votre inscription""")
                 return redirect('log_in')
-                # return HttpResponse("""S'il vous plaît, confirmez votre adresse mail
-                #     pour finaliser votre inscription""")
 
             else:
                 error = True
