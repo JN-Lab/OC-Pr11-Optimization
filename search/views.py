@@ -176,8 +176,10 @@ def register(request):
                     to=[to_email]
                 )
                 email.send()
-                return HttpResponse("""S'il vous plaît, confirmez votre adresse mail
-                    pour finaliser votre inscription""")
+
+                return redirect('log_in')
+                # return HttpResponse("""S'il vous plaît, confirmez votre adresse mail
+                #     pour finaliser votre inscription""")
 
             else:
                 error = True
