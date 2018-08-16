@@ -1,0 +1,6 @@
+{% autoescape off %}
+Hello {{ user.username }},
+Cliquez sur le lien ci-dessous s'il vous plaît pour confirmer votre inscription,
+
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
