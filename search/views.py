@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+# coding: utf-8
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.contrib.auth import authenticate, login, logout
@@ -160,10 +163,10 @@ def register(request):
 
                 current_site = get_current_site(request)
                 mail_subject = 'Activer votre compte.'
-                message = render_to_string('acc_activate_email.html', {
+                message = render_to_string('acc_active_email.html', {
                     'user': user,
                     'domain': current_site.domain,
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                     'token': account_activation_token.make_token(user),
                 })
                 to_email = mail
@@ -190,7 +193,7 @@ def register(request):
 # Activation view for registration
 def activate(request, uidb64, token):
     try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
+        uid = urlsafe_base64_decode(uidb64).decode()
         user = User.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
@@ -201,7 +204,7 @@ def activate(request, uidb64, token):
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
-        
+
 # Log-in
 def log_in(request):
     """

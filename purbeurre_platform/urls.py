@@ -23,8 +23,7 @@ from search import views
 urlpatterns = [
     path('', views.index, name="index"),
     path('register/', views.register, name="register"),
-    re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        views.activate, name='activate'),
+    path('activate/<uidb64>/<token>', views.activate, name='activate'),
     path('login/', views.log_in, name="log_in"),
     path('logout/', views.log_out, name="log_out"),
     path('search/', include('search.urls', namespace='search')),
