@@ -165,6 +165,6 @@ else:
 # Email configuration
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'dev.openclassrooms@gmail.com'
-EMAIL_HOST_PASSWORD = 'dev_openclassrooms_2018'
+EMAIL_HOST_USER = 'YOUR_MAIL'
+EMAIL_HOST_PASSWORD = 'YOUR_PASSWORD'
 EMAIL_PORT = 587
