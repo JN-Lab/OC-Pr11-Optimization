@@ -12,13 +12,15 @@ class OpenFoodFactsInteractions:
     
     def get_products_selection(self, query, max_numb):
         """
-        This method coordinates severa methods from the class to give some example :
+        This method coordinates several methods from the class to give some example :
             -> If api sends back products, it cleaned them
             -> If selected product > wanted number, a process of selection is realized
             -> It returns the necessary dict at the end
         """
 
         data_from_api = self._get_products_from_api_search('brands', query, 150)
+        if data_from_api["count"] < 0:
+            data_from_api = self._get_products_from_api_large_search(query, 150)
 
         if data_from_api["count"] > 0:
             products_selected = self._select_appropriate_products(data_from_api, query)
@@ -31,6 +33,8 @@ class OpenFoodFactsInteractions:
             return products_selected
         else:
             return None
+
+
 
     def get_substitute_products_from_api(self, element_type, info_id, max_numb):
         """
@@ -90,8 +94,6 @@ class OpenFoodFactsInteractions:
     def _get_products_from_api_search(self, query_type, query, page_size):
         """
         This method gets all the products from the API linked to the brands asked by the user (query)
-        If there is no product -> return None
-        If there is product:
         """
 
         payload = {
@@ -104,6 +106,25 @@ class OpenFoodFactsInteractions:
             'page' : '1'
         }
 
+        request = requests.get('https://fr.openfoodfacts.org/cgi/search.pl', params=payload)
+        data = request.json()
+
+        return data
+
+    def _get_products_from_api_large_search(self, query, page_size):
+        """
+        This method gets all the products from the API linked to a query asked by the user (query)
+        This is a arge request (more than the others), so the precisions in the results will be
+        larger but less precise.
+        """        
+        payload = {
+            'action' : 'process',
+            'search_simple' : '1',
+            'search_terms' : query,
+            'page_size' : page_size,
+            'page' : '1',
+            'json' : '1'
+        }
         request = requests.get('https://fr.openfoodfacts.org/cgi/search.pl', params=payload)
         data = request.json()
 
