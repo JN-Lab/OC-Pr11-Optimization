@@ -19,7 +19,7 @@ class OpenFoodFactsInteractions:
         """
 
         data_from_api = self._get_products_from_api_search('brands', query, 150)
-        if data_from_api["count"] < 0:
+        if data_from_api["count"] <= 0:
             data_from_api = self._get_products_from_api_large_search(query, 150)
 
         if data_from_api["count"] > 0:
