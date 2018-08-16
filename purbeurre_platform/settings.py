@@ -161,3 +161,10 @@ else:
         os.path.join(BASE_DIR, "static"),
         os.path.join(BASE_DIR, "search/static"),
     ]
+
+# Email configuration
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'dev.openclassrooms@gmail.com'
+EMAIL_HOST_PASSWORD = 'dev_openclassrooms_2018'
+EMAIL_PORT = 587
