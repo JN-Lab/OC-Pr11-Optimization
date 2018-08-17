@@ -1,10 +1,14 @@
-# OC-Pr8-OpenFoodFacts-App
-Repository for Project 8 from Openclassrooms cursus in Software Development
+# OC-Pr11-OpenFoodFacts-App
+Repository for Project 11 from Openclassrooms cursus in Software Development
 
 ## Project Description
 
 This is a web application built with **Django** to help user to find healthier products of their favorites food.
-The application is deployed on **Heroku**.
+The project consists in taking the application from Projet 8 : https://github.com/JN-Lab/OC-Pr8-OpenFoodFacts-App , and developping a new feature.
+
+In this case, two optimizations had been done:
+* The algorithm to search products to substitute from the API had been improved
+* The registration process had been improved with an email validation
 
 ### Simplified App Structure
 
@@ -33,6 +37,7 @@ The application is deployed on **Heroku**.
     |-- admin.py
     |-- apps.py
     |-- forms.py
+    |-- tokens.py
     |-- models.py
     |-- urls.py
     |-- views.py
@@ -54,7 +59,7 @@ The application is deployed on **Heroku**.
 
 1. Clone the repository:
 ```
-git clone https://github.com/JN-Lab/OC-Pr8-OpenFoodFacts-App.git
+git clone https://github.com/JN-Lab/OC-Pr11-Optimization.git
 ```
 
 When you are in your directory (root):
@@ -74,7 +79,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-6. Set-up your database in **settings.py** file 
+6. Set-up your database and email in **settings.py** file 
 
 7. Go in purbeurre platform directory to have access to manage.py file to launch the initialisation of the database with the basic datas:
 ```
