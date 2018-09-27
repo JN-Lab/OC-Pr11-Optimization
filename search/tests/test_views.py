@@ -3,6 +3,7 @@
 from unittest.mock import patch
 from django.test import TestCase
 from django.urls import reverse
+from django.core import mail
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from ..views import index, choice
@@ -449,3 +450,21 @@ class ProductRegisteredPageTestCase(TestCase):
         response = self.client.get(reverse('search:product_registered'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, '/login/?next=/search/product-registered')
+
+class EmailTest(TestCase):
+
+    def test_send_email(self):
+        
+        # Send message.
+        mail.send_mail(
+            'Subject of the mail', 'Message of the mail',
+            'from@example.com', ['to@example.com'],
+            fail_silently=False,
+        )
+
+        # Test that one message has been sent.
+        self.assertEqual(len(mail.outbox), 1)
+
+        # Verify that the subject of the first message is correct.
+        self.assertEqual(mail.outbox[0].subject, 'Subject of the mail')
+        self.assertEqual(mail.outbox[0].body, 'Message of the mail')

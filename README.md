@@ -1,10 +1,14 @@
-# OC-Pr8-OpenFoodFacts-App
-Repository for Project 8 from Openclassrooms cursus in Software Development
+# OC-Pr11-OpenFoodFacts-App
+Repository for Project 11 from Openclassrooms cursus in Software Development
 
 ## Project Description
 
 This is a web application built with **Django** to help user to find healthier products of their favorites food.
-The application is deployed on **Heroku**.
+The objective of this project is to improve the project 8 by:
+* Reinforcing the Search algorithm
+* Reinforcing the Registration process with email validation
+
+Before testing, do not forget to set-up your SMTP server in **settings.py** !
 
 ### Simplified App Structure
 
@@ -76,17 +80,19 @@ pip install -r requirements.txt
 
 6. Set-up your database in **settings.py** file 
 
-7. Go in purbeurre platform directory to have access to manage.py file to launch the initialisation of the database with the basic datas:
+7. Set-up yout SMTP server in **settings.py** file
+
+8. Go in purbeurre platform directory to have access to manage.py file to launch the initialisation of the database with the basic datas:
 ```
 ./manage.py dbinit
 ```
 
-8. Run the django local server:
+9. Run the django local server:
 ```
 ./manage.py runserver
 ```
 
-9. You go on your favorite browser and copy paste this url:
+10. You go on your favorite browser and copy paste this url:
 ```
 http://127.0.0.1:8000/
 ```
